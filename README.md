@@ -1,4 +1,4 @@
-# Eval-feature-selection
+# MSstats-feature-selection
 
 This repository hosts a set of R scripts for the MSstats analyses and for evaluating and summarizing the analysis results presented in the manuscript: 
 
