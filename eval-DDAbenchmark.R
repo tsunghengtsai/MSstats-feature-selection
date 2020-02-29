@@ -10,7 +10,7 @@
 ## Please run first the MSstats analyses with run-msstats-benchmark.R
 ## 
 ## The results are summarized and presented in the manuscript:
-##   T-H Tsai, M Choi, B Banfai, Y Liu, T Dunkley, and O Vitek (2019),
+##   T-H Tsai, M Choi, B Banfai, Y Liu, B MacLean, T Dunkley, and O Vitek (2019),
 ##   "Selection of features with consistent profiles improves relative
 ##   protein quantification in mass spectrometry experiments."
 ######################################################################
@@ -227,8 +227,16 @@ dset_name <- "dda.iprg.pg"; dset_text <- "DDA iPRG (Progenesis)"
 prot_name <- "sp|P32898|CYM1_YEAST"
 
 # Example of Skyline (Fig. 5c)
-dset_name <- "dda.iprg.sl"; dset_text <- "DDA iPRG (Skyline)"
-prot_name <- "sp|P32898|CYM1_YEAST"
+# dset_name <- "dda.iprg.sl"; dset_text <- "DDA iPRG (Skyline)"
+# prot_name <- "sp|P32898|CYM1_YEAST"
+
+# Example of Proteome Discoverer (Fig. S10a)
+# dset_name <- "dda.choi.pd"; dset_text <- "DDA Choi (Proteome Discoverer)"
+# prot_name <- "P00698"
+
+# Example of Proteome Discoverer (Fig. S10b)
+# dset_name <- "dda.choi.pd"; dset_text <- "DDA Choi (Proteome Discoverer)"
+# prot_name <- "P61769"
 
 # Loading processed data with annotation of uninformative features
 proc_name <- paste0("processed.", dset_name, ".inf")
@@ -282,7 +290,7 @@ test_res_all %>%
 myPalette <- c("#E69F00", "#999999", "#56B4E9", "#daeefe")
 colmeth <- c("Proposed", "All", "Top5", "Top3")
 
-# Absolute errors for background proteins (Fig. S8a)
+# Absolute errors for background proteins (Fig. S7a)
 df_dummy <- data.frame(
     tool = "MaxQuant", log2FC = 0.32, trueLog2FC = 0, 
     method = factor(rep(colmeth, 2), levels = colmeth), 
@@ -308,7 +316,7 @@ test_res_all %>%
     theme(legend.position = "bottom")
 # ggsave("boxabserr-10-dda_bg.png", width = 10, height = 4.5)
 
-# Standard errors for background proteins (Fig. S8b)
+# Standard errors for background proteins (Fig. S7b)
 df_dummy <- data.frame(
     tool = "MaxQuant", SE = 0.31, 
     method = factor(rep(colmeth, 2), levels = colmeth), 
@@ -339,7 +347,7 @@ test_res_all %>%
 myPalette <- c("#E69F00", "#6b6b6b", "#008ECC", "#89CFF0")
 colmeth <- c("Proposed", "All", "Top5", "Top3")
 
-# ROC curve for the Choi benchmark (Fig. S9)
+# ROC curve for the Choi benchmark (Fig. S8)
 sp_curves_all %>% 
     filter(expt == "DDA Choi") %>% 
     mutate(Method = factor(method, levels = colmeth)) %>% 
@@ -356,7 +364,7 @@ sp_curves_all %>%
     theme(legend.position = "bottom")
 # ggsave("rocs-10-dda_choi_doc.png", width = 6, height = 6)
 
-# ROC curve for the iPRG benchmark (Fig. S10)
+# ROC curve for the iPRG benchmark (Fig. S9)
 sp_curves_all %>% 
     filter(expt == "DDA iPRG") %>% 
     mutate(Method = factor(method, levels = colmeth)) %>% 
@@ -427,10 +435,10 @@ for (j in seq_along(meth)) {
 
 # Estimation accuracy versus number of features ---------------------------
 
-nb_ftr_lbnd <- 10
+nb_ftr_lbnd <- 7
 nb_ftr_hbnd <- 20
 
-nb_ftr_lchr <- str_c("# features < ", nb_ftr_lbnd)
+nb_ftr_lchr <- str_c("# features ", "1 - ", nb_ftr_lbnd - 1)
 nb_ftr_hchr <- str_c("# features > ", nb_ftr_hbnd)
 nb_ftr_mchr <- str_c("# features ", nb_ftr_lbnd, " - ", nb_ftr_hbnd)
 

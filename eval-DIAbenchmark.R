@@ -9,7 +9,7 @@
 ## Please run first the MSstats analyses with run-msstats-benchmark.R
 ## 
 ## The results are summarized and presented in the manuscript:
-##   T-H Tsai, M Choi, B Banfai, Y Liu, T Dunkley, and O Vitek (2019),
+##   T-H Tsai, M Choi, B Banfai, Y Liu, B MacLean, T Dunkley, and O Vitek (2019),
 ##   "Selection of features with consistent profiles improves relative
 ##   protein quantification in mass spectrometry experiments."
 ######################################################################
@@ -392,7 +392,7 @@ test_res_tp <- test_res_all %>%
     filter(de == "With change") %>% 
     mutate(Protein = str_extract(Protein, pattern = regex_uniprot_iso))
 
-# Euler diagram for the Bruderer benchmark (Fig. 4, Fig. S7)
+# Euler diagram for the Bruderer benchmark (Fig. 4a)
 bm <- "DIA Bruderer"
 for (j in seq_along(meth)) {
     test_tmp <- test_res_tp %>% 
@@ -411,7 +411,7 @@ for (j in seq_along(meth)) {
     dev.off()
 }
 
-# Euler diagram for the Navarro benchmark (Fig. 4, Fig. S7)
+# Euler diagram for the Navarro benchmark (Fig. 4b)
 bm <- "DIA Navarro"
 for (j in seq_along(meth)) {
     test_tmp <- test_res_tp %>% 
@@ -432,10 +432,10 @@ for (j in seq_along(meth)) {
 
 # Estimation accuracy versus number of features ---------------------------
 
-nb_ftr_lbnd <- 10
+nb_ftr_lbnd <- 7
 nb_ftr_hbnd <- 20
 
-nb_ftr_lchr <- str_c("# features < ", nb_ftr_lbnd)
+nb_ftr_lchr <- str_c("# features ", "1 - ", nb_ftr_lbnd - 1)
 nb_ftr_hchr <- str_c("# features > ", nb_ftr_hbnd)
 nb_ftr_mchr <- str_c("# features ", nb_ftr_lbnd, " - ", nb_ftr_hbnd)
 

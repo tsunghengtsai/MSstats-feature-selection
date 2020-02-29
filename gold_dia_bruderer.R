@@ -5,7 +5,7 @@
 ## benchmark in eval-DIAbenchmark.R
 ## 
 ## The results are summarized and presented in the manuscript:
-##   T-H Tsai, M Choi, B Banfai, Y Liu, T Dunkley, and O Vitek (2019),
+##   T-H Tsai, M Choi, B Banfai, Y Liu, B MacLean, T Dunkley, and O Vitek (2019),
 ##   "Selection of features with consistent profiles improves relative
 ##   protein quantification in mass spectrometry experiments."
 ######################################################################

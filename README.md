@@ -2,7 +2,7 @@
 
 This repository hosts a set of R scripts for the MSstats analyses and for evaluating and summarizing the analysis results presented in the manuscript: 
 
-	    T-H Tsai, M Choi, B Banfai, Y Liu, T Dunkley, and O Vitek (2019),
+	    T-H Tsai, M Choi, B Banfai, Y Liu, B MacLean, T Dunkley, and O Vitek (2019),
 	    "Selection of features with consistent profiles improves relative protein quantification in mass spectrometry experiments."
 
 ## Datasets
